@@ -4,12 +4,6 @@
             [io.pedestal.http.route :as route]
             [hiccup2.core :as hic]))
 
-(defn hello-world
-  [req]
-  (println req)
-  {:status 200
-   :body "Hello, world!"})
-
 (defn hello
   [req]
   (println req)
@@ -33,6 +27,14 @@
             "go to green"]]]
    :status 200})
 
+(defn coba
+  [req]
+  {:status 200
+   :html [:html
+          [:body
+           [:h1 "Guess a number: "
+            [:p {:style {:border-style "solid"}} 92]]]]})
+
 (def html-response
   {:name  ::html-response
    :leave (fn [{:keys [response]
@@ -49,7 +51,8 @@
 
 (def routes
   #{["/" :get [html-response hello] :route-name :hello]
-    ["/yellow" :get [html-response hello-yellow] :route-name :hello-yellow]})
+    ["/yellow" :get [html-response hello-yellow] :route-name :hello-yellow]
+    ["/coba" :get [html-response coba] :route-name :coba]})
 
 (def service-map
   {::http/routes routes
