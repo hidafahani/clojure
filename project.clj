@@ -8,5 +8,6 @@
                  [io.pedestal/pedestal.service "0.5.8"]
                  [io.pedestal/pedestal.jetty "0.5.8"]
                  [io.pedestal/pedestal.route "0.5.8"]
-                 [hiccup/hiccup "2.0.0-alpha2"]]
+                 [hiccup/hiccup "2.0.0-alpha2"]
+                 [reagent "0.8.1"]]
   :repl-options {:init-ns pedestal.core})
