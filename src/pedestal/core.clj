@@ -11,7 +11,6 @@
           [:body
            [:p {:style {:background-color "lightgreen"}}
             "Hello from HTML in green"]
-           ;; let's add a link to yellow page here
            [:a {:href (route/url-for :hello-yellow)}
             "go to yellow"]]]
    :status 200})
@@ -36,7 +35,6 @@
             [:label "Please enter your username:"
              [:input {:type "text"}]]
             [:button {:type :submit} "Submit"]]]]})
-
 
 (def html-response
   {:name  ::html-response
