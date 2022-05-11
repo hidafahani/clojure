@@ -32,8 +32,11 @@
   {:status 200
    :html [:html
           [:body
-           [:h1 "Guess a number: "
-            [:p {:style {:border-style "solid"}} 92]]]]})
+           [:form
+            [:label "Please enter your username:"
+             [:input {:type "text"}]]
+            [:button {:type :submit} "Submit"]]]]})
+
 
 (def html-response
   {:name  ::html-response
