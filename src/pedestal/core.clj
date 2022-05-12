@@ -1,42 +1,41 @@
 (ns pedestal.core
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
-            [io.pedestal.http.route :as route]
             [hiccup2.core :as hic]
             [reagent.core :as r]
             [re-frame.core :as re-frame]))
 
 (defn hello
   [req]
-  (println req)
-  {:html [:html
-          [:body
-           [:p {:style {:background-color "lightgreen"}}
-            "Hello from HTML in green"]
-           [:a {:href (route/url-for :hello-yellow)}
-            "go to yellow"]]]
+  {:html   [:html
+            [:body
+             [:p {:style {:font-color "blue"}}
+              "Hello"]
+             [:a {:href (route/url-for :hello2)}
+              "Click here"]]]
    :status 200})
 
-(defn hello-yellow
+(defn hello2
   [req]
-  (println req)
-  {:html [:html
-          [:body
-           [:p {:style {:background-color "yellow"}}
-            "Hello from HTML in yellow"]
-           [:a {:href (route/url-for :hello)}
-            "go to green"]]]
+  {:html   [:html
+            [:body
+             [:p {:style {:font-color "green"}}
+              "Hi!"]
+             [:a {:href (route/url-for :hello)}
+              "Click here"]]]
    :status 200})
 
 (defn coba
   [req]
   {:status 200
-   :html [:html
-          [:body
-           [:form
-            [:label "Please enter your username:"
-             [:input {:type "text"}]]
-            [:button {:type :submit} "Submit"]]]]})
+   :html   [:html
+            [:body
+             [:form {:method "post"}
+              [:label "The answer is :"
+               [:input {:type "text"
+                        :placeholder "type here"}]]
+              [:button {:type :submit} "Submit"]]]]})
+
 
 (def html-response
   {:name  ::html-response
@@ -54,7 +53,7 @@
 
 (def routes
   #{["/" :get [html-response hello] :route-name :hello]
-    ["/yellow" :get [html-response hello-yellow] :route-name :hello-yellow]
+    ["/yellow" :get [html-response hello2] :route-name :hello2]
     ["/coba" :get [html-response coba] :route-name :coba]})
 
 (def service-map
