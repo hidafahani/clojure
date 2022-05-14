@@ -2,8 +2,7 @@
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
             [hiccup2.core :as hic]
-            [reagent.core :as r]
-            [re-frame.core :as re-frame]))
+            [reagent.core :as r]))
 
 (defn hello
   [req]
@@ -25,7 +24,7 @@
               "Click here"]]]
    :status 200})
 
-(defn coba
+(defn main
   [req]
   {:status 200
    :html   [:html
@@ -52,9 +51,9 @@
               ctx))})
 
 (def routes
-  #{["/" :get [html-response hello] :route-name :hello]
-    ["/yellow" :get [html-response hello2] :route-name :hello2]
-    ["/coba" :get [html-response coba] :route-name :coba]})
+  #{["/" :get [html-response main] :route-name :main]
+    ["/hello" :get [html-response hello] :route-name :hello]
+    ["/hello2" :get [html-response hello2] :route-name :hello2]})
 
 (def service-map
   {::http/routes routes

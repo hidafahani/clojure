@@ -10,6 +10,5 @@
                  [org.slf4j/slf4j-simple "1.7.28"]
                  [hiccup/hiccup "2.0.0-alpha2"]
                  [cljs-ajax "0.2.6"]
-                 [reagent "1.0.0"]
-                 [re-frame "1.2.0"]]
+                 [reagent "1.0.0"]]
   :repl-options {:init-ns pedestal.core})
